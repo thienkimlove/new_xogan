@@ -18,20 +18,25 @@ $(document).ready(function () {
         itemsTablet: [768, 2],
         itemsMobile: [479, 1]
     });
-
+    if( $('#slide_header').length )
+    {
+        $("#slide_header").owlCarousel({
+            autoPlay : false,
+            navigation: true,
+            pagination: true,
+            paginationSpeed : 1000,
+            goToFirstSpeed : 2000,
+            singleItem : true,
+            autoHeight : false
+        });
+    }
     if( $('#sidebar').length )
     {
        var h =  $("#sidebar").height();
        var e = $("#sidebar").offset().top + h + 100;
-       console.log('height:' + h);
-       console.log('E :' + e);
-
-
         $(window).scroll(function () {
             var o = $(window).scrollTop();
-            console.log('o:' + o);
             var f = $("#experience").offset().top - h;
-            console.log('f :' + f);
             (e <= o && o <= f) ? $("#sidebar").addClass("fixed") : $("#sidebar").removeClass("fixed");
         });
     }
