@@ -13,10 +13,10 @@ return [
         'posts' => [
             'name' => 'Bài viết',
             'modules' => [
-                'display_in_index_category' => 'Show On Index Category',
-                'display_in_index_top' => 'Show On Index Top',
                 'index_right' => 'Right Index',
+                'normal_right' => 'Right Trang trong',
                 'index_right_share' => 'Share Right Index',
+                'display_index' => 'Show On Index'
             ]
         ],
 
@@ -25,8 +25,7 @@ return [
             'modules' => [
                 'index_block_1' => 'Block 1 Index',
                 'index_block_2' => 'Block 2 Index',
-                'index_block_3' => 'Block 3 Index',
-                'index_block_4' => 'Block 4 Index',
+                'index_block_3' => 'Block 3 Index'
             ]
         ],
         'videos' => [

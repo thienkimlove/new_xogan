@@ -3,6 +3,7 @@
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 
 class Category extends Model  {
@@ -33,7 +34,9 @@ class Category extends Model  {
         'display_homepage_0',
         'display_homepage_1',
         'display_homepage_2',
-        'display_homepage_3'
+        'display_homepage_3',
+        'seo_name',
+        'seo_desc'
     ];
 
 
@@ -45,6 +48,24 @@ class Category extends Model  {
     {
         //return $this->belongsTo(Category::class, 'parent_id', 'id');
         return $this->belongsTo(Category::class, 'parent_id', 'id');
+    }
+
+    public function indexPosts()
+    {
+        $categoryId = $this->id;
+
+       return Post::where('posts.status', true)
+            ->latest('modules.created_at')
+            ->select('posts.*')
+            ->join('categories', function($join) use ($categoryId) {
+                $join->on('categories.id', '=', 'posts.category_id');
+                $join->whereRaw("(categories.id = $categoryId OR categories.parent_id = $categoryId)");
+            })
+            ->join('modules', function($join) {
+                $join->on('modules.key_value', '=', 'posts.id');
+                $join->on('modules.key_type', '=', DB::raw("'display_index'"));
+                $join->on('modules.key_content', '=', DB::raw("'posts'"));
+            })->get();
     }
 
     /**

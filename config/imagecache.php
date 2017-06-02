@@ -31,9 +31,8 @@ return array(
     */
     
     'paths' => array(
-        public_path('files'),
         public_path('files/images'),
-        public_path('images')
+
     ),
 
     /*

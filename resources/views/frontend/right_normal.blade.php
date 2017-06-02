@@ -4,7 +4,7 @@
             <a href="#">BÀI VIẾT NỔI BẬT</a>
         </h3>
         <div class="box-bd boxHot">
-            @foreach (\App\Site::getRightIndexPosts() as $rightIndexPost)
+            @foreach (\App\Site::getRightNormalPosts() as $rightIndexPost)
                 <div class="item cf">
                 <a href="{{url($rightIndexPost->slug.'.html')}}" class="thumb">
                     <img src="{{url('files/images', $rightIndexPost->image)}}" alt="hot" width="120" height="84">
@@ -93,7 +93,7 @@
         </div>
     </div>
     <div class="Social">
-        <div class="fb-page" data-href="https://www.facebook.com/viemgan.com.vn" data-width="300" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/viemgan.com.vn"><a href="https://www.facebook.com/viemgan.com.vn">PHÒNG BỆNH GAN</a></blockquote></div></div>
+        <div class="fb-page" data-href="https://www.facebook.com/tienlietvuong.vn" data-width="300" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/tienlietvuong.vn"><a href="https://www.facebook.com/tienlietvuong.vn">TIỀN LIỆT VƯƠNG</a></blockquote></div></div>
     </div>
     <div class="most-readed share-exp" id="sidebar">
         <h3 class="global-title">

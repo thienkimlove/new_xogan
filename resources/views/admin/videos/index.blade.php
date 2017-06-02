@@ -35,7 +35,7 @@
                                     <td>{{$content->id}}</td>
                                     <td>{{$content->title}}</td>
                                     <td>{{$content->code}}</td>
-                                    <td><img src="{{url('img/cache/small/' .$content->image)}}" /></td>
+                                    <td><img src="{{url('files/images/' .$content->image)}}" width="100" height="100" /></td>
 
 
                                     <td>

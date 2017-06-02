@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use Hash;
 use Illuminate\Http\Request;
 use Validator;
@@ -12,7 +13,7 @@ class VideosController extends AdminController
     public $model = 'videos';
 
     public $validator = [
-        'name' => 'required',
+        'title' => 'required',
     ];
     private function init()
     {
@@ -51,14 +52,16 @@ class VideosController extends AdminController
                 ->withInput();
         }
         $data = $request->all();
-        $data['password'] =  Hash::make(time());
+
         if ($request->file('image') && $request->file('image')->isValid()) {
             $data['image'] = $this->saveImage($request->file('image'));
         } else {
             unset($data['image']);
         }
         $modelClass = $this->init();
-        $modelClass::create($data);
+        $content = $modelClass::create($data);
+
+
         flash()->success('Success created!');
         return redirect('admin/'.$this->model);
     }
@@ -86,6 +89,8 @@ class VideosController extends AdminController
             unset($data['image']);
         }
         $content->update($data);
+
+
         flash()->success('Success edited!');
         return redirect('admin/'.$this->model);
     }

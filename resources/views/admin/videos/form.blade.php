@@ -29,7 +29,7 @@
                 <div class="form-group">
                     {!! Form::label('image', 'Image') !!}
                     @if ($content->image)
-                        <img src="{{url('img/cache/small/' .$content->image)}}" />
+                        <img src="{{url('files/images' .$content->image)}}" />
                         <hr>
                     @endif
                     {!! Form::file('image', null, ['class' => 'form-control']) !!}

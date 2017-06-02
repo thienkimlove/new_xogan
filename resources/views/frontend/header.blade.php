@@ -26,7 +26,7 @@
     @endforeach
 </div>
 <div class="btn-group-fix banner-ads">
-    <a href="https://www.facebook.com/viemgan.com.vn" title="Fanpage"><img src="{{url('viemgan/images/fb-icon.png')}}" alt="Fanpage" width="63" height="63"></a>
+    <a href="https://www.facebook.com/tienlietvuong.vn" title="Fanpage"><img src="{{url('viemgan/images/fb-icon.png')}}" alt="Fanpage" width="63" height="63"></a>
     <a href="tel:18001190" title="Gọi tư vấn"><img src="{{url('viemgan/images/call-icon.png')}}" alt="Gọi tư vấn" width="63" height="63"></a>
     <a href="{{url('phan-phoi')}}" title="Mua hàng"><img src="{{url('viemgan/images/cart-icon.png')}}" alt="Giỏ hàng" width="63" height="63"></a>
     <a href="{{url('phan-phoi')}}" title="Điểm bán sản phẩm"><img src="{{url('viemgan/images/location-icon.png')}}" alt="Điểm bán sản phẩm" width="63" height="63"></a>
@@ -36,24 +36,21 @@
         <a href="javascript:void(0)" class="miniMenu-btn pa open-main-nav" data-menu="#main-nav"></a>
     </div>
     <div class="fixCen head-info">
-        <h1 class="rs"><a href="{{url('/')}}" class="logo" title="Viêm gan">
-                <img src="{{url('viemgan/images/logo.png')}}" alt="Viêm gan" width="170" height="99" class="imgFull">
+        <h1 class="rs"><a href="{{url('/')}}" class="logo" title="Tiền Liệt Vương">
+                <img src="{{url('viemgan/images/logo.png')}}" alt="Tiền Liệt Vương" width="170" height="99" class="imgFull">
             </a></h1>
-        <span class="slogan">
-                    CỔNG THÔNG TIN VỀ BỆNH VIÊM GAN - XƠ GAN
-                    <i class="small">BẢO TRỢ BỞI HỘI GAN MẬT VIỆT NAM</i>
-                </span>
-        <div class="icon-header">
-            <img src="{{url('viemgan/images/icon.png')}}" alt="" class="imgFull" width="67" height="71">
+        <div class="slogan">
+            <span>Giảm Tiểu Đêm</span>
+             <span>Dịu Êm Tiền Liệt Tuyến</span>
         </div>
         <span class="hotline" id="hotline">
-                    <a href="tel:19006639">
+                    <a href="tel:18001190">
                         <img src="{{url('viemgan/images/hotline.png')}}" alt="" width="166" height="56" class="imgFull">
                     </a>
                     <form action="{{url('tim-kiem')}}" method="GET" class="search-on-top">
                         <input type="text" name="q" placeholder="Tìm kiếm">
                     </form>
-                </span>
+      </span>
     </div>
     <nav id="main-nav" class="menu-mb">
         <ul class="fixCen pr rs">

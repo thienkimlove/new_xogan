@@ -32,6 +32,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
+                                <th>Image</th>
                                 <th>Ask Person</th>
                                 <th>Question</th>
                                 <th>Short Answer</th>
@@ -48,6 +49,7 @@
                                 <tr>
                                     <td>{{$content->id}}</td>
                                     <td>{{$content->title}}</td>
+                                    <td><img src="{{url('files/images', $content->image)}}" height="100" width="100" /></td>
                                     <td>{{$content->person}}</td>
                                     <td>{{$content->question}}</td>
                                     <td>{{$content->short_answer}}</td>

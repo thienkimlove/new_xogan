@@ -39,9 +39,7 @@ class AdminController extends Controller
 
         Image::make($file->getRealPath())->save(public_path('files/images/'. $filename));
 
-        if ($old) {
-            @unlink(public_path('files/images/' .$old));
-        }
+
         return $filename;
     }
 

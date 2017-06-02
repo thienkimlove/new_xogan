@@ -185,7 +185,8 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
 
         Cviebrock\EloquentSluggable\ServiceProvider::class,
-        Watson\Sitemap\SitemapServiceProvider::class
+        Watson\Sitemap\SitemapServiceProvider::class,
+        //Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
