@@ -38,11 +38,10 @@
                                 </div>
                             </div>
                         </article>
-                        @include('frontend.list_button')
                         <div class="ads">
                             @foreach (\App\Site::getFrontendBanners()->where('position', 2) as $banner)
                                 <a href="{{$banner->link}}" title="Banner" target="_blank">
-                                    <img src="{{url('files/images', $banner->image)}}" alt="" class="imgFull" width="658" height="136">
+                                    <img src="{{url('files', $banner->image)}}" alt="" class="imgFull" width="658" height="136">
                                 </a>
                             @endforeach
                         </div>
@@ -52,42 +51,47 @@
                                 <a href="{{url('tu-khoa', $tag->slug)}}" title="">{{$tag->name}}</a>
                             @endforeach
                         </div>
-                        <div class="news-bt">
-                            <div class="box-usual-ques">
-                                <h3 class="global-title">
-                                    <a href="#"> TIN LIÊN QUAN</a>
-                                </h3>
-                                <div class="box-bd">
-                                    @foreach ($post->related_posts as $rPost)
-                                        <div class="item cf item-r">
-                                            <h3>
-                                                <a href="{{url($rPost->slug.'.html')}}">{{$rPost->title}}</a>
-                                            </h3>
-                                        </div>
-                                    @endforeach
-                                </div>
+                        @include('frontend.list_button')
+                        <div class="related-news">
+                            <div class="custom-global-title">
+                                <a href="#"> TIN LIÊN QUAN</a>
                             </div>
-                            <div class="box-usual-ques">
-                                <h3 class="global-title">
-                                    <a href="#">TIN MỚI</a>
-                                </h3>
-                                <div class="box-bd">
-                                    @foreach (\App\Site::getLatestNormalPosts() as $normalPost)
-                                        <div class="item cf item-r">
-                                            <h3>
-                                                <a href="{{url($normalPost->slug.'.html')}}">{{$normalPost->title}}</a>
-                                            </h3>
-                                        </div>
-                                    @endforeach
-                                </div>
+                            <div class="box-bd">
+                                @foreach ($post->related_posts as $rPost)
+                                    <div class="item cf item-r">
+                                        <h3>
+                                            <a href="{{url($rPost->slug.'.html')}}">{{$rPost->title}}</a>
+                                        </h3>
+                                    </div>
+                                @endforeach
                             </div>
-                        </div>
-                        <div class="social-bt">
-                            <div class='fb-like' data-action='like' data-href='{{url( $post->slug.'.html')}}' data-layout='button_count' data-share='true' data-show-faces='false' data-width='520'></div>
-                        <g:plusone size="tall"></g:plusone>
                         </div>
                         <div class="comment-post">
-                            <div class="fb-comments" data-href="{{url( $post->slug.'.html')}}" data-numposts="2" data-width="100%"></div>
+                            <div class="tabs tabComment">
+                                <a href="javascript:void(0)" class="default-tab active" title="Bình luận" data-content=".default-comments">Bình luận bài viết</a>
+                                <a href="javascript:void(0)" class="fb-tab " title="Bình luận Facebook" data-content=".fb-cmt-content">Bình luận facebook</a>
+                            </div>
+                            <div class="fb-cmt-content cmtContent">
+                                <div class="fb-comments" data-href="{{url( $post->slug.'.html')}}" data-numposts="2" data-width="100%"></div>
+                            </div>
+                            <div class="default-comments cmtContent active">
+                                <div class="content">
+                                    <!--<div class="old-cmt">-->
+                                    <!--<div class="name">Phương Mai đã bình luận</div>-->
+                                    <!--<div class="date">27-12-2017 10:18</div>-->
+                                    <!--<div class="cmt-content">Thông tin khoa học cần tham khảo</div>-->
+                                    <!--<a href="javascript:void(0)" class="your-answer-btn" title="Trả lời">Trả lời</a>-->
+                                    <!--</div>-->
+                                    <div class="new-cmt">
+                                        <form action="" class="cmt-form">
+                                            <input type="text" name="name" placeholder="Nhập tên của bạn">
+                                            <input type="text" name="email" placeholder="Nhập email của bạn">
+                                            <textarea name="content" cols="30" rows="6" placeholder="Nội dung"></textarea>
+                                            <button class="send-cmt">Gửi</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

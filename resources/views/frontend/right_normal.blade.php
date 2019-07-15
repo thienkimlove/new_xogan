@@ -7,7 +7,7 @@
             @foreach (\App\Site::getRightNormalPosts() as $rightIndexPost)
                 <div class="item cf">
                 <a href="{{url($rightIndexPost->slug.'.html')}}" class="thumb">
-                    <img src="{{url('files/images', $rightIndexPost->image)}}" alt="hot" width="120" height="84">
+                    <img src="{{url('files', $rightIndexPost->image)}}" alt="hot" width="120" height="84">
                 </a>
                 <h4>
                     <a href="{{url($rightIndexPost->slug.'.html')}}">{{$rightIndexPost->title}}</a>
@@ -70,7 +70,7 @@
     <div class="box-adv">
         @foreach (\App\Site::getFrontendBanners()->where('position', 4) as $banner)
         <a href="{{$banner->link}}" title="Banner" target="_blank">
-            <img src="{{url('files/images', $banner->image)}}" alt="" class="imgFull" width="315" height="202">
+            <img src="{{url('files', $banner->image)}}" alt="" class="imgFull" width="315" height="202">
         </a>
         @endforeach
     </div>
@@ -93,17 +93,17 @@
         </div>
     </div>
     <div class="Social">
-        <div class="fb-page" data-href="https://www.facebook.com/tienlietvuong.vn" data-width="300" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/tienlietvuong.vn"><a href="https://www.facebook.com/tienlietvuong.vn">TIỀN LIỆT VƯƠNG</a></blockquote></div></div>
+        <div class="fb-page" data-href="https://www.facebook.com/viemgan.com.vn" data-width="300" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/viemgan.com.vn"><a href="https://www.facebook.com/viemgan.com.vn">Phòng Bệnh Gan</a></blockquote></div></div>
     </div>
     <div class="most-readed share-exp" id="sidebar">
         <h3 class="global-title">
-            <a href="#">Chia sẻ của người dùng</a>
+            <a href="#">Chia sẻ từ cộng đồng</a>
         </h3>
         <div class="box-bd boxHot">
             @foreach (\App\Site::getRightIndexSharePosts() as $rightIndexSharePost)
             <div class="item cf">
                 <a href="{{url($rightIndexSharePost->slug.'.html')}}" class="thumb">
-                    <img src="{{url('files/images', $rightIndexSharePost->image)}}" alt="hot" width="120" height="84">
+                    <img src="{{url('files', $rightIndexSharePost->image)}}" alt="hot" width="120" height="84">
                 </a>
                 <h4>
                     <a href="{{url($rightIndexSharePost->slug.'.html')}}">{{$rightIndexSharePost->title}}</a>

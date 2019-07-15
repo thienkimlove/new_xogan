@@ -42,7 +42,9 @@ class Post extends Model {
         'tieude',
         'related',
         'content_1',
-        'content_2'
+        'content_2',
+        'author_id',
+        'expert_id',
     ];
 
 
@@ -53,6 +55,21 @@ class Post extends Model {
     public function category()
     {
        return $this->belongsTo(Category::class);
+    }
+
+    public function author()
+    {
+        return $this->belongsTo(Author::class);
+    }
+
+    public function expert()
+    {
+        return $this->belongsTo(Author::class, 'expert_id', 'id');
+    }
+
+    public function details()
+    {
+        return $this->hasMany(Detail::class);
     }
 
     /**

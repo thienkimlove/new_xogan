@@ -1,9 +1,9 @@
 <div class="widget-wrap">
     <div class="hide-form-phone">
-        <p>Đăng ký nhận tư vấn miễn phí</p>
+        <p>Để lại tin nhắn cho chúng tôi</p>
     </div>
     <div class="show-form-phone">
-        <h4>Đăng ký nhận tư vấn miễn phí</h4>
+        <h4>Để lại tin nhắn cho chúng tôi</h4>
         <div class="box-show">
             <p>Chỉ cần đặt câu hỏi, chuyên gia sẽ gọi lại tư vấn cụ thể cho bạn</p>
             <form id="getQues" action="{{url('saveContact')}}" method="POST">
@@ -21,12 +21,12 @@
 <div class="banner-ads left">
     @foreach (\App\Site::getFrontendBanners()->where('position', 3) as $banner)
     <a href="{{$banner->link}}" title="" target="_blank">
-        <img src="{{url('files/images', $banner->image)}}" alt="" width="171" height="454">
+        <img src="{{url('files', $banner->image)}}" alt="" width="171" height="454">
     </a>
     @endforeach
 </div>
 <div class="btn-group-fix banner-ads">
-    <a href="https://www.facebook.com/tienlietvuong.vn" title="Fanpage"><img src="{{url('viemgan/images/fb-icon.png')}}" alt="Fanpage" width="63" height="63"></a>
+    <a href="https://www.facebook.com//viemgan.com.vn" title="Fanpage"><img src="{{url('viemgan/images/fb-icon.png')}}" alt="Fanpage" width="63" height="63"></a>
     <a href="tel:18001190" title="Gọi tư vấn"><img src="{{url('viemgan/images/call-icon.png')}}" alt="Gọi tư vấn" width="63" height="63"></a>
     <a href="{{url('phan-phoi')}}" title="Mua hàng"><img src="{{url('viemgan/images/cart-icon.png')}}" alt="Giỏ hàng" width="63" height="63"></a>
     <a href="{{url('phan-phoi')}}" title="Điểm bán sản phẩm"><img src="{{url('viemgan/images/location-icon.png')}}" alt="Điểm bán sản phẩm" width="63" height="63"></a>
@@ -36,21 +36,25 @@
         <a href="javascript:void(0)" class="miniMenu-btn pa open-main-nav" data-menu="#main-nav"></a>
     </div>
     <div class="fixCen head-info">
-        <h1 class="rs"><a href="{{url('/')}}" class="logo" title="Tiền Liệt Vương">
-                <img src="{{url('viemgan/images/logo.png')}}" alt="Tiền Liệt Vương" width="170" height="99" class="imgFull">
+        <h1 class="rs leftSide"><a href="{{url('/')}}" class="logo" title="Bệnh xơ gan">
+                <img src="{{url('viemgan/images/logo.png')}}" alt="Bệnh xơ gan" width="170" height="99" class="imgFull">
             </a></h1>
-        <div class="slogan">
-            <span>Giảm Tiểu Đêm</span>
-             <span>Dịu Êm Tiền Liệt Tuyến</span>
+        <span class="slogan center">
+                    Chuyên trang cộng đồng <br>
+                    <strong>Dành cho người bệnh xơ gan</strong>
+                </span>
+        <div class="rightSide">
+            <div class="btns">
+                <a href="javascript:void(0)" class="btn-login" title="Đăng nhập" onclick="login()">Đăng nhập</a>
+                <a href="javascript:void(0)" class="btn-regis" title="Đăng ký" onclick="register()">Đăng ký</a>
+            </div>
+            <a href="{{ url('/dang-bai-viet') }}" class="btn-postArticle" title="Đăng bài viết">
+                Đăng bài viết
+            </a>
+            <form action="{{url('tim-kiem')}}" method="GET" class="search-on-top">
+                <input type="text" name="q" placeholder="Tìm kiếm">
+            </form>
         </div>
-        <span class="hotline" id="hotline">
-                    <a href="tel:18001190">
-                        <img src="{{url('viemgan/images/hotline.png')}}" alt="" width="166" height="56" class="imgFull">
-                    </a>
-                    <form action="{{url('tim-kiem')}}" method="GET" class="search-on-top">
-                        <input type="text" name="q" placeholder="Tìm kiếm">
-                    </form>
-      </span>
     </div>
     <nav id="main-nav" class="menu-mb">
         <ul class="fixCen pr rs">

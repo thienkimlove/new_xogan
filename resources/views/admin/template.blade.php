@@ -217,6 +217,37 @@
 
                         </ul>
                     </li>
+                    <li>
+                        <a><i class="fa fa-folder-o fa-fw"></i>Authors<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+
+                            <li>
+                                <a href="{{url('admin', 'authors')}}">List</a>
+                            </li>
+
+                            <li>
+                                <a href="{{url('admin/authors/create')}}">Create</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a><i class="fa fa-folder-o fa-fw"></i>Details<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+
+                            <li>
+                                <a href="{{url('admin', 'details')}}">List</a>
+                            </li>
+
+                            <li>
+                                <a href="{{url('admin/details/create')}}">Create</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+
 
                 </ul>
             </div>

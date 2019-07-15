@@ -41,6 +41,16 @@
                     {!! Form::select('category_id', \App\Site::getCategories(), null, ['class' => 'form-control']) !!}
                 </div>
 
+                <div class="form-group">
+                    {!! Form::label('author_id', 'Author') !!}
+                    {!! Form::select('author_id', \App\Site::getAuthors(), null, ['class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('expert_id', 'Expert') !!}
+                    {!! Form::select('expert_id', \App\Site::getAuthors(), null, ['class' => 'form-control']) !!}
+                </div>
+
 
                 <div class="form-group">
                     {!! Form::label('desc', 'Description') !!}

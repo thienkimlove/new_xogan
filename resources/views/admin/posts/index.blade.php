@@ -36,9 +36,9 @@
                                 <th>Desc</th>
                                 <th>Image</th>
                                 <th>Category</th>
-
+                                <th>Author</th>
+                                <th>Expert</th>
                                 <th>Action</th>
-
                                 @foreach (config("site.content.$model.modules") as $k => $module)
                                     <th>{{$module}}</th>
                                 @endforeach
@@ -53,6 +53,8 @@
                                     <td>{{$content->desc}}</td>
                                     <td><img src="{{url('img/cache/small', $content->image)}}" /></td>
                                     <td>{{$content->category->name}}</td>
+                                    <td>{{ isset($content->author) ? $content->author->name : ''}}</td>
+                                    <td>{{ isset($content->expert) ? $content->expert->name : ''}}</td>
 
                                   <td>
                                         <button id-attr="{{$content->id}}"

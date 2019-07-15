@@ -4,20 +4,23 @@ $(document).ready(function () {
     clickShowPopupVideo('.thumb-video a', '.popup-video');
     menu('.open-main-nav');
     bannerAdsSide();
-    changeContentTab('.tab-pro a', '.des-pro .tab-content');
-    changeContentTab('.tabs .tab');
-    $("#slider-2").owlCarousel({
-        navigation: true,
-        pagination: true,
-        autoPlay: true,
-        autoPlaySpeed: 2000,
-        responsive: true,
-        items: 3,
-        itemsDesktop: [1199, 3],
-        itemsDesktopSmall: [980, 3],
-        itemsTablet: [768, 2],
-        itemsMobile: [479, 1]
-    });
+    changeContentTab('.tab');
+    changeContentTab('.tabs a');
+    if( $('#slider-2').length )
+    {
+        $("#slider-2").owlCarousel({
+            navigation: true,
+            pagination: true,
+            autoPlay: true,
+            autoPlaySpeed: 2000,
+            responsive: true,
+            items: 3,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [980, 3],
+            itemsTablet: [768, 2],
+            itemsMobile: [479, 1]
+        });
+    }
     if( $('#slide_header').length )
     {
         $("#slide_header").owlCarousel({
@@ -54,8 +57,12 @@ function bannerAdsSide() {
     var $banner = $('.banner-ads'), $window = $(window);
     var $topDefault = parseFloat($banner.css('top'), 10);
     $window.on('scroll', function () {
+        var $docHeight = $('html, body').innerHeight();
         var $top = $(this).scrollTop();
         $banner.stop().animate({top: $top + $topDefault}, 100, 'easeOutCirc');
+        if($top >= ($docHeight - 800)){
+            $banner.stop().animate({top: $top }, 0);
+        }
     });
 }
 function clickChangeVideo(btnClick, posShowvideo) {
@@ -76,10 +83,10 @@ function clickShowPopupVideo(btnClick, popupName) {
         });
     });
 }
-function changeContentTab(btnClick, tabContent) {
+function changeContentTab(btnClick) {
     $(btnClick).click(function () {
         var content = $(this).data('content');
-        $(this).siblings().removeClass('active');
+        $(btnClick).removeClass('active');
         $(this).addClass('active');
         $(content).siblings().removeClass('active');
         $(content).addClass('active');
@@ -92,11 +99,11 @@ function menu(btnClick) {
         var menu = $(this).data('menu');
         if (click == 0) {
             $(menu).addClass('transX0');
-            $(this).css({'background': 'url("http://www.duoclieutuelinh.vn/frontend/images/menu-close.png")'});
+            $(this).css({'background': 'url("../images/menu-close.png")'});
             click++;
         } else {
             $(menu).removeClass('transX0');
-            $(this).css({'background': 'url("http://www.duoclieutuelinh.vn/frontend/images/menu-open.png")'});
+            $(this).css({'background': 'url("../images/menu-open.png")'});
             click--;
         }
     });
@@ -123,21 +130,21 @@ function notify(message) {
     });
 }
 function login() {
-    $(".popup-dn").fadeIn();
+    $(".popup-login").fadeIn();
     $(".close-popup").click(function () {
-        $(".popup-dn").fadeOut();
+        $(".popup-login").fadeOut();
     });
-    $(".popup-dn .btn-dk").click(function () {
-        $(".popup-dn").fadeOut();
-        $(".popup-dk").fadeIn();
-        $(".popup-dk .close-popup").click(function () {
-            $(".popup-dk").fadeOut();
+    $(".popup-login .btn-create").click(function () {
+        $(".popup-login").fadeOut();
+        $(".popup-regis").fadeIn();
+        $(".popup-regis .close-popup").click(function () {
+            $(".popup-regis").fadeOut();
         });
     });
 }
 function register() {
-    $(".popup-dk").fadeIn();
+    $(".popup-regis").fadeIn();
     $(".close-popup").click(function () {
-        $(".popup-dk").fadeOut();
+        $(".popup-regis").fadeOut();
     });
 }

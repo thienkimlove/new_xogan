@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Author;
 use App\Category;
 use App\Contact;
+use App\Detail;
 use App\District;
 use App\Land;
 use App\Module;
 use App\Order;
 use App\Post;
+use App\PostComment;
 use App\Province;
 use App\Question;
 use App\Store;
@@ -70,6 +73,24 @@ class FrontendController extends Controller
         ));
     }
 
+    public function saveRegister(Request $request)
+    {
+        //Register::create($request->all());
+        return redirect('/');
+    }
+
+    public function write()
+    {
+        $page = 'write';
+        return view('frontend.write', compact('page'));
+    }
+
+    public function policy()
+    {
+        $page = 'policy';
+        return view('frontend.policy', compact('page'));
+    }
+
     public function category($slug)
     {
         $category = Category::findBySlug($slug);
@@ -110,6 +131,47 @@ class FrontendController extends Controller
             return view('frontend.question', compact('page', 'questions'));
         }
     }
+    public function author($slug)
+    {
+        $page = 'author';
+        $author = Author::findBySlug($slug);
+        if ($author) {
+            $posts = Post::where('author_id', $author->id)->paginate(10);
+            return view('frontend.author', compact('page', 'author', 'posts'));
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function saveComment(Request $request)
+    {
+        $data = $request->all();
+        $redirectUrl = null;
+
+        if (isset($data['redirect_url'])) {
+            $redirectUrl = $data['redirect_url'];
+            unset($data['redirect_url']);
+        }
+
+        if (!empty($data['name']) && !empty($data['email']) && !empty($data['content']) ) {
+
+            Detail::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'content' => $data['content'],
+                'post_id' => $data['post_id'],
+                'status' => 0
+            ]);
+        }
+
+
+        if ($redirectUrl) {
+            return redirect()->to($redirectUrl.'?success=1');
+        }
+
+        return redirect('/');
+
+    }
 
     public function post($slug)
     {
@@ -117,11 +179,12 @@ class FrontendController extends Controller
         if (preg_match('/([a-z0-9\-]+)\.html/', $slug, $matches)) {
             $post = Post::findBySlug($matches[1]);
             if ($post) {
+                $post->increment('views', 1);
                 $meta_title = $post->tieude ? $post->tieude : $post->title;
                 $meta_desc = $post->desc;
                 $page = ($post->category->parent_id) ? $post->category->parent->slug : $post->category->slug;
                 if ($post->content_1 && $post->content_2) {
-                    return view('frontend.product', compact('page', 'post', 'title'));
+                    return view('frontend.product', compact('page', 'post', 'meta_title', 'meta_desc'));
                 } else {
                     return view('frontend.post', compact('page', 'post', 'meta_title', 'meta_desc'));
                 }
@@ -240,7 +303,7 @@ class FrontendController extends Controller
                 return redirect('/');
             }
         }
-        $videos = Video::paginate(12);
+            $videos = Video::latest('created_at')->paginate(12);
         return view('frontend.video', compact('mainVideo', 'videos', 'page'));
     }
 
